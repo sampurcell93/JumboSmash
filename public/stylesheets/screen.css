@@ -368,9 +368,51 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* line 17, ../sass/screen.scss */
 body {
   font-family: sans-serif;
+  background: url(../img/linen.png);
+  position: relative;
+}
+/* line 22, ../sass/screen.scss */
+body:after {
+  content: "";
+  position: fixed;
+  display: none;
+  left: 0;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9911;
+}
+/* line 34, ../sass/screen.scss */
+body.active-modal::after {
+  display: block;
 }
 
-/* line 21, ../sass/screen.scss */
+/* line 40, ../sass/screen.scss */
+.my-modal {
+  display: block;
+  width: 900px;
+  position: fixed;
+  left: 50%;
+  z-index: 9912;
+  margin-left: -400px;
+  top: 100px;
+  text-align: center;
+  background: #f9f9f9;
+  padding: 10px;
+  -webkit-box-shadow: 0px 0px 7px #222222;
+  -moz-box-shadow: 0px 0px 7px #222222;
+  box-shadow: 0px 0px 7px #222222;
+}
+/* line 54, ../sass/screen.scss */
+.my-modal .close-modal {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  cursor: pointer;
+}
+
+/* line 62, ../sass/screen.scss */
 button {
   padding: 6px 8px;
   border: 1px solid #ccc;
@@ -381,21 +423,50 @@ button {
   border-radius: 2px;
 }
 
-/* line 27, ../sass/screen.scss */
+/* line 68, ../sass/screen.scss */
+.signup-logo {
+  width: 600px;
+  margin: 10px auto;
+  line-height: 80px;
+  color: #f9f9f9;
+}
+
+/* line 75, ../sass/screen.scss */
+.smash-logo {
+  background: url("../img/jumboheart.png") left center no-repeat;
+  min-height: 80px;
+}
+
+/* line 80, ../sass/screen.scss */
 .login-window {
+  background: #f9f9f9;
   overflow: hidden;
   *zoom: 1;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
   margin: 40px auto;
   width: 600px;
-  border: 1px solid red;
+  border: 1px solid #ccc;
   padding: 10px;
 }
-/* line 34, ../sass/screen.scss */
+/* line 89, ../sass/screen.scss */
 .login-window input {
   margin: 9px auto;
 }
+/* line 93, ../sass/screen.scss */
+.login-window p {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  border: 1px solid #ddd;
+}
 
-/* line 39, ../sass/screen.scss */
+/* line 99, ../sass/screen.scss */
 input {
   font-size: 1em;
   display: block;
@@ -410,5 +481,9 @@ input {
   -moz-box-shadow: inset 0px 1px 3px #cccccc;
   box-shadow: inset 0px 1px 3px #cccccc;
   outline: none;
-  border: none;
+  border: 1px solid transparent;
+}
+/* line 109, ../sass/screen.scss */
+input:focus {
+  border: 1px solid #B81F11;
 }

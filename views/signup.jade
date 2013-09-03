@@ -1,6 +1,10 @@
 include head.jade
+h1.center.smash-logo.signup-logo JumboSmash Signup
 .login-window
+    p.p10 JumboSmash is a platform that Tufts students can use to make romantic connections. 
+        | If this sounds like something you're interested in, just add your email and graduation year here, and we'll get back to you when it goes live!
+        | Email Samuel.Purcell@tufts.edu for help, or with privacy concerns.
     form(action='/signup', method='POST')
         input(type='text', placeholder='Tufts Email Address', name='email').email-signup
         input(type='text', placeholder='Graduation Year', name='grad_year').grad-signup
-        button.fr(type='submit', name='submit_login').js-sign-up.btn-success Sign Up
+        button.fr(type='submit', name='submit_login').js-sign-up.btn-danger Sign Up

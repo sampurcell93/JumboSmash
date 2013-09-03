@@ -45,14 +45,14 @@
         upsert: true
       }, function(err, inserted) {
         if (err || !inserted) {
-          return res.redirect("/signup?bad=true");
+          return res.redirect("/signup?signup=wrong");
         } else {
-          return res.redirect("/signup?bad=false");
+          return res.redirect("/signup?signup=right");
         }
       });
       return true;
     }
-    return res.redirect("/signup?bad=true");
+    return res.redirect("/signup?signup=wrong");
   });
 
 }).call(this);

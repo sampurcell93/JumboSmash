@@ -26,8 +26,8 @@ app.post "/signup", (req,res, next) ->
             email: email
         }, {$set: {email: email, grad_year: year}}, {upsert: true}, (err, inserted) ->
             if err || !inserted
-                res.redirect "/signup?bad=true"
+                res.redirect "/signup?signup=wrong"
             else 
-                res.redirect "/signup?bad=false"
+                res.redirect "/signup?signup=right"
         return true
-    res.redirect  "/signup?bad=true"
+    res.redirect  "/signup?signup=wrong"

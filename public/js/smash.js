@@ -56,7 +56,7 @@
       }
     });
     signup = $.urlParam("signup");
-    if (typeof signup !== "undefined") {
+    if (signup !== 0) {
       cc(signup);
       return launchModal(messages['signup'][signup], 5000);
     }

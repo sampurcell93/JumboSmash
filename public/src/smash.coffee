@@ -39,6 +39,6 @@ $ ->
             e.preventDefault()
             launchModal("Your graduation year must be a number between 2014 and 2018", 1500)
     signup = $.urlParam("signup")
-    if typeof signup != "undefined"
+    if signup != 0
         cc signup
         launchModal messages['signup'][signup], 5000

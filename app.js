@@ -31,12 +31,18 @@
   app.post("/signup", function(req, res, next) {
     var click, email, year;
     click = req.body.submit_login;
-    email = req.body.email;
-    year = req.body.grad_year;
+    email = req.body.email.toLowerCase();
+    year = parseInt(req.body.grad_year);
     if (typeof click !== "undefined") {
-      db.users.insert({
-        email: email,
-        grad_year: year
+      db.users.update({
+        email: email
+      }, {
+        $set: {
+          email: email,
+          grad_year: year
+        }
+      }, {
+        upsert: true
       }, function(err, inserted) {
         if (err || !inserted) {
           return res.redirect("/signup?bad=true");

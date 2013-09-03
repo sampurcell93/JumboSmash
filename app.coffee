@@ -19,13 +19,12 @@ app.get "/signup", (req,res,next) ->
 
 app.post "/signup", (req,res, next) ->
     click = req.body.submit_login
-    email = req.body.email
-    year = req.body.grad_year
+    email = req.body.email.toLowerCase()
+    year = parseInt req.body.grad_year
     unless typeof click == "undefined"
-        db.users.insert {
+        db.users.update {
             email: email
-            grad_year: year
-        }, (err, inserted) ->
+        }, {$set: {email: email, grad_year: year}}, {upsert: true}, (err, inserted) ->
             if err || !inserted
                 res.redirect "/signup?bad=true"
             else 

@@ -368,7 +368,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* line 17, ../sass/screen.scss */
 body {
   font-family: sans-serif;
-  background: url(../img/linen.png);
+  background: #222 !important;
   position: relative;
 }
 /* line 22, ../sass/screen.scss */

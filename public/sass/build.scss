@@ -1,0 +1,59 @@
+@import "compass/css3";
+
+.center { text-align: center; }
+.relative { position: relative; display: block; }
+.absolute { position: absolute;}
+.sticky { position: fixed !important;}
+.fr { float: right; }
+.fl { float: left; }
+.m0 { margin: 0;}
+.m10 { margin: 10px !important;}
+.m20 { margin: 20px !important; }
+.m30 { margin: 30px !important; }
+.s9 { font-size: .9em !important; }
+.s8 {font-size: .8em !important;}
+.s7 {font-size: .7em !important;}
+.s6 {font-size: .6em !important;}
+.s5 {font-size: .5em !important;}
+.s4 {font-size: .4em !important;}
+.s3 {font-size: .3em !important;}
+.s2 {font-size: .2em !important;}
+.s1 {font-size: .1em !important;}
+.ml-0 { margin-left: 0px !important;}
+.mt-40 { margin-top: 40px !important;}
+.mauto { margin-left: auto !important; margin-right: auto !important;}
+.p0 { padding: 0 !important; }
+.p10 { padding: 10px !important;}
+.p15 { padding: 15px; }
+.p30 { padding: 30px !important;}
+.pointer { cursor: pointer; }
+.border-simple { border: 1px solid #ccc; }
+.no-show { @include opacity(0);}
+.show {@include opacity(1);}
+.noclick { pointer-events: none;}
+.inline { display: inline-block; }
+.block { display: block !important; }
+.hidden { display: none; }
+.visible { display: block; }
+.clear { clear: both;}
+.w1 { width: 10%; }
+.w15 { width: 15%; }
+.w2 { width: 20%; }
+.w25 { width: 25%; }
+.w3 { width: 30%; }
+.w35 { width: 35%; }
+.w4 { width: 40%; }
+.w45 { width: 45%; }
+.w5 { width: 50%; }
+.w55 { width: 55%; }
+.w6 { width: 60%; }
+.w65 { width: 65%; }
+.w7 { width: 70%; }
+.w75 { width: 75%; }
+.w8 { width: 80%; }
+.w85 { width: 85%; }
+.w9 { width: 90%; }
+.w95 { width: 94.5%; }
+.w10 { width: 100%; }
+.icon { font-family: 'icons'; }
+.white { color: #fff; }

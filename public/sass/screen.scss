@@ -4,3 +4,45 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 @import "compass/reset";
+@import "compass/css3";
+@import "compass/utilities/general/clearfix";
+@import "build";
+
+* {
+    margin: 0;
+    padding: 0;
+    @include box-sizing(border-box);
+}
+
+body {
+    font-family: sans-serif;
+}
+
+button { 
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    @include border-radius(2px);
+}
+
+.login-window {
+    @include clearfix();
+    margin: 40px auto;
+    width: 600px;
+    border: 1px solid red;
+    padding: 10px;
+
+    input {
+        margin: 9px auto;
+    }
+}
+
+input {
+    font-size: 1em;
+    display: block;
+    width: 100%;
+    padding: 7px 5px;
+    @include border-radius(3px);
+    @include box-shadow(inset 0px 1px 3px #ccc);
+    outline: none;
+    border: none;
+}

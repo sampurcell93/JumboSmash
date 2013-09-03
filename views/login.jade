@@ -1,0 +1,6 @@
+include head.jade
+.login-window
+    form(action='/login', method='POST')
+        input(type='text', placeholder='Email Address', name='email')
+        input(type='text', placeholder='Password', name='password')
+        button.fr(type='submit', name='submit-login') Login

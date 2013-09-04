@@ -110,3 +110,56 @@ input {
         border: 1px solid #B81F11;
     }
 }
+
+.small-container {
+    @include border-radius(2px);
+    @extend .container;
+    margin: 10px auto;
+    width: 600px;
+}
+
+.smash-list {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+
+    .placeholder {
+        border: 1px solid #ddd;
+        @include border-radius(2px);
+        margin: 5px;
+        padding: 5px;
+        background: #eee;
+    }
+}
+
+.filtered-list {
+    background: #f9f9f9;
+    @include border-radius(3px);
+
+    li {
+        text-indent: 30px;
+        padding: 4px 0;
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #ccc;
+        cursor: pointer;
+
+        &:first-of-type { @include border-radius(3px 3px 0 0); }
+        &:last-of-type { @include border-radius(0 0 3px 3px); }
+
+        &:hover {
+            // needs latest Compass, add '@import "compass"' to your scss
+            background-color: rgb(255,255,255); // Old browsers
+            @include filter-gradient(#ffffff, #e5e5e5, vertical); // IE6-9
+            @include background-image(linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%));
+            color: #cc0000;
+        }
+
+        &.selected {
+            background: #cc0000;       
+        }
+
+        .js-choose {
+            padding: 0 10px;
+        }
+    }
+
+}

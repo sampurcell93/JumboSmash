@@ -487,3 +487,86 @@ input {
 input:focus {
   border: 1px solid #B81F11;
 }
+
+/* line 114, ../sass/screen.scss */
+.small-container {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  margin: 10px auto;
+  width: 600px;
+}
+
+/* line 121, ../sass/screen.scss */
+.smash-list {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+}
+/* line 125, ../sass/screen.scss */
+.smash-list .placeholder {
+  border: 1px solid #ddd;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  margin: 5px;
+  padding: 5px;
+  background: #eee;
+}
+
+/* line 134, ../sass/screen.scss */
+.filtered-list {
+  background: #f9f9f9;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 138, ../sass/screen.scss */
+.filtered-list li {
+  text-indent: 30px;
+  padding: 4px 0;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+/* line 145, ../sass/screen.scss */
+.filtered-list li:first-of-type {
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  -ms-border-radius: 3px 3px 0 0;
+  -o-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+}
+/* line 146, ../sass/screen.scss */
+.filtered-list li:last-of-type {
+  -webkit-border-radius: 0 0 3px 3px;
+  -moz-border-radius: 0 0 3px 3px;
+  -ms-border-radius: 0 0 3px 3px;
+  -o-border-radius: 0 0 3px 3px;
+  border-radius: 0 0 3px 3px;
+}
+/* line 148, ../sass/screen.scss */
+.filtered-list li:hover {
+  background-color: white;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFFFFFFF', endColorstr='#FFE5E5E5');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #e5e5e5));
+  background-image: -webkit-linear-gradient(top, #ffffff 0%, #e5e5e5 100%);
+  background-image: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%);
+  background-image: -o-linear-gradient(top, #ffffff 0%, #e5e5e5 100%);
+  background-image: linear-gradient(top, #ffffff 0%, #e5e5e5 100%);
+  color: #cc0000;
+}
+/* line 156, ../sass/screen.scss */
+.filtered-list li.selected {
+  background: #cc0000;
+}
+/* line 160, ../sass/screen.scss */
+.filtered-list li .js-choose {
+  padding: 0 10px;
+}

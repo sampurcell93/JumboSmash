@@ -4,5 +4,6 @@
         "jade":"*",
         "mongodb":"*",
         "mongojs":"*"
+	"socket.io":"*"
     }
 }

@@ -370,8 +370,9 @@ body {
   font-family: sans-serif;
   background: #222 !important;
   position: relative;
+  padding-top: 30px;
 }
-/* line 22, ../sass/screen.scss */
+/* line 23, ../sass/screen.scss */
 body:after {
   content: "";
   position: fixed;
@@ -383,12 +384,12 @@ body:after {
   background: rgba(0, 0, 0, 0.5);
   z-index: 9911;
 }
-/* line 34, ../sass/screen.scss */
+/* line 35, ../sass/screen.scss */
 body.active-modal::after {
   display: block;
 }
 
-/* line 40, ../sass/screen.scss */
+/* line 41, ../sass/screen.scss */
 .my-modal {
   display: block;
   width: 900px;
@@ -404,7 +405,7 @@ body.active-modal::after {
   -moz-box-shadow: 0px 0px 7px #222222;
   box-shadow: 0px 0px 7px #222222;
 }
-/* line 54, ../sass/screen.scss */
+/* line 55, ../sass/screen.scss */
 .my-modal .close-modal {
   position: absolute;
   top: 4px;
@@ -412,7 +413,7 @@ body.active-modal::after {
   cursor: pointer;
 }
 
-/* line 62, ../sass/screen.scss */
+/* line 63, ../sass/screen.scss */
 button {
   padding: 6px 8px;
   border: 1px solid #ccc;
@@ -423,7 +424,7 @@ button {
   border-radius: 2px;
 }
 
-/* line 68, ../sass/screen.scss */
+/* line 69, ../sass/screen.scss */
 .signup-logo {
   width: 600px;
   margin: 10px auto;
@@ -431,13 +432,13 @@ button {
   color: #f9f9f9;
 }
 
-/* line 75, ../sass/screen.scss */
+/* line 76, ../sass/screen.scss */
 .smash-logo {
   background: url("../img/jumboheart.png") left center no-repeat;
   min-height: 80px;
 }
 
-/* line 80, ../sass/screen.scss */
+/* line 81, ../sass/screen.scss */
 .login-window {
   background: #f9f9f9;
   overflow: hidden;
@@ -452,11 +453,11 @@ button {
   border: 1px solid #ccc;
   padding: 10px;
 }
-/* line 89, ../sass/screen.scss */
+/* line 90, ../sass/screen.scss */
 .login-window input {
   margin: 9px auto;
 }
-/* line 93, ../sass/screen.scss */
+/* line 94, ../sass/screen.scss */
 .login-window p {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -466,7 +467,7 @@ button {
   border: 1px solid #ddd;
 }
 
-/* line 99, ../sass/screen.scss */
+/* line 100, ../sass/screen.scss */
 input {
   font-size: 1em;
   display: block;
@@ -483,12 +484,12 @@ input {
   outline: none;
   border: 1px solid transparent;
 }
-/* line 109, ../sass/screen.scss */
+/* line 110, ../sass/screen.scss */
 input:focus {
   border: 1px solid #B81F11;
 }
 
-/* line 114, ../sass/screen.scss */
+/* line 115, ../sass/screen.scss */
 .small-container {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -499,12 +500,12 @@ input:focus {
   width: 600px;
 }
 
-/* line 121, ../sass/screen.scss */
+/* line 122, ../sass/screen.scss */
 .smash-list {
   background: #f9f9f9;
   border: 1px solid #ddd;
 }
-/* line 125, ../sass/screen.scss */
+/* line 126, ../sass/screen.scss */
 .smash-list .placeholder {
   border: 1px solid #ddd;
   -webkit-border-radius: 2px;
@@ -516,8 +517,17 @@ input:focus {
   padding: 5px;
   background: #eee;
 }
-
 /* line 134, ../sass/screen.scss */
+.smash-list li {
+  display: block;
+  padding: 4px 10px;
+}
+/* line 138, ../sass/screen.scss */
+.smash-list li.match {
+  color: #cc0000;
+}
+
+/* line 144, ../sass/screen.scss */
 .filtered-list {
   background: #f9f9f9;
   -webkit-border-radius: 3px;
@@ -525,8 +535,10 @@ input:focus {
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
   border-radius: 3px;
+  max-height: 270px;
+  overflow: auto;
 }
-/* line 138, ../sass/screen.scss */
+/* line 150, ../sass/screen.scss */
 .filtered-list li {
   text-indent: 30px;
   padding: 4px 0;
@@ -534,7 +546,7 @@ input:focus {
   border-bottom: 1px solid #ccc;
   cursor: pointer;
 }
-/* line 145, ../sass/screen.scss */
+/* line 157, ../sass/screen.scss */
 .filtered-list li:first-of-type {
   -webkit-border-radius: 3px 3px 0 0;
   -moz-border-radius: 3px 3px 0 0;
@@ -542,7 +554,7 @@ input:focus {
   -o-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
 }
-/* line 146, ../sass/screen.scss */
+/* line 158, ../sass/screen.scss */
 .filtered-list li:last-of-type {
   -webkit-border-radius: 0 0 3px 3px;
   -moz-border-radius: 0 0 3px 3px;
@@ -550,7 +562,7 @@ input:focus {
   -o-border-radius: 0 0 3px 3px;
   border-radius: 0 0 3px 3px;
 }
-/* line 148, ../sass/screen.scss */
+/* line 160, ../sass/screen.scss */
 .filtered-list li:hover {
   background-color: white;
   *zoom: 1;
@@ -562,11 +574,37 @@ input:focus {
   background-image: linear-gradient(top, #ffffff 0%, #e5e5e5 100%);
   color: #cc0000;
 }
-/* line 156, ../sass/screen.scss */
+/* line 168, ../sass/screen.scss */
 .filtered-list li.selected {
   background: #cc0000;
 }
-/* line 160, ../sass/screen.scss */
+/* line 172, ../sass/screen.scss */
 .filtered-list li .js-choose {
   padding: 0 10px;
+}
+
+/* line 179, ../sass/screen.scss */
+nav {
+  top: 0;
+  width: 100%;
+  background-color: white;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFFFFFFF', endColorstr='#FFE5E5E5');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #e5e5e5));
+  background-image: -webkit-linear-gradient(top, #ffffff 0%, #e5e5e5 100%);
+  background-image: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%);
+  background-image: -o-linear-gradient(top, #ffffff 0%, #e5e5e5 100%);
+  background-image: linear-gradient(top, #ffffff 0%, #e5e5e5 100%);
+}
+/* line 186, ../sass/screen.scss */
+nav ul {
+  height: 100%;
+  margin: 0 auto;
+  width: 960px;
+}
+/* line 191, ../sass/screen.scss */
+nav ul li {
+  padding: 4px 10px;
+  display: inline-block;
+  margin: 0;
 }

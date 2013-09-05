@@ -1,14 +1,20 @@
 express = require 'express'
 url = require 'url'
+_ = require 'underscore'
 app = do express
 app.listen process.env.PORT || 4040
 
 checkAuth = (req,res,next) ->
     req.user = "samuel.purcell@tufts.edu"
-    next()
+    req.user = "grace.buchloh@tufts.edu"
+    db.users.findOne({email: req.user}, (err, user)->
+        req.user = user
+        next()
+    ) 
 
 cc = (arg) ->
     console.log arg
+
 temp = "mongodb://heroku:192be8556a80da2574b29c0a48b37360@ethan.mongohq.com:10058/app17903256"
 db = require("mongojs").connect(temp || process.env.MONGOHQ_URL || "JumboSmash", ['users'])
 app.configure ->
@@ -42,9 +48,8 @@ app.post "/signup", (req,res, next) ->
         return true
     res.redirect  "/signup?msg=signup_wrong"
 
-app.get "/smashes", (req, res) ->
-    db.users.find({email: 'samuel.purcell@tufts.edu'}, (err, user) ->
-        cc user
+app.get "/smashes", checkAuth, (req, res) ->
+    db.users.find({email: req.user.email}, (err, user) ->
         res.render "smashes", {
             user: user[0]
             scripts: ["js/test.js"]
@@ -54,26 +59,63 @@ app.get "/smashes", (req, res) ->
 ### REST API ###
 # Get the list of matches for a given user
 app.get "/matches", checkAuth, (req, res) ->
-    db.users.find({email: req.user}, (err, user) ->
-        res.json user
-    )
-
+    search = req.query.search
+    loggedin = req.user
+    db.users.findOne {email: search}, (err, user) ->
+        matches = user.matches
+        # Check all matches for the desired person
+        for match in matches
+            # If the person's desired matches the current user
+            if match.email == loggedin.email
+                # Set that match to true
+                match.match = true
+                # Get the current user's reference to the desired and set it to true
+                cc loggedin
+                _.each loggedin.matches, (logged_match) ->
+                    cc logged_match
+                    if logged_match.email == search then logged_match.match = true
+                # cc loggedin
+                # cc user
+                # Update the logged in user's match list
+                db.users.update {email: loggedin.email}, {$set: {matches: loggedin.matches}}, ->
+                    # Update the desired person's match list
+                    db.users.update({email: user.email}, {$set: {matches: matches}}, ->
+                        # Return true so ajax can handle it
+                        res.json match: true
+                    )
+                return true
+        res.json match: false
 # Add a new match to a user's list
-app.post "/matches/:matchid", (req, res) ->
+app.post "/matches", checkAuth, (req, res) ->
+    matches = req.body.matches
+    cc "POSTING"
+    db.users.update {email: req.user.email},  {$set: {matches: matches}}, (err, updated) ->
+        res.json success: true
 
 # Remove a match from the logged in user
 app.delete "/matches/:matchid", (req, res) ->
 
 app.get "/users", (req, res) ->
+    ignore = req.query.ignore
     # query = req.params.query
-    db.users.find {}, {matches: 0}, (err, users) ->
+    db.users.find {}, (err, users) ->
+        clean = []
+        _.each users, (user) ->
+            unless ignore? and ignore.indexOf(user.email) != -1
+                user.match_total = (_.filter user.matches, (matches) ->
+                    matches.match == true
+                ).length
+                # delete user.matches
+                clean.push user
+                return true
+            cc "ignoring" + user.email
         if !err
-            res.json users
+            res.json clean
         else 
             res.json success: false
     true
 
 app.get "/dev", (req,res) ->
-    db.users.update({email: "samuel.purcell@tufts.edu"}, {$set: {matches: ["grace.buchloh@tufts.edu, jack.watterson@tufts.edu"]} }, {multi: true}, ->
+    db.users.update({}, {$set: {matches: []} }, {multi: true}, ->
         res.json success: true
     )

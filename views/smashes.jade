@@ -1,12 +1,14 @@
 include head.jade
-    h1.white.center Jumbo Smash
-    .small-container
-        ul.smash-list
-            li.center.placeholder You have no current matches! Search names below to find your "desirables".
-        input(type='text', placeholder='Find People!').js-find-people
-    script#person-select(type='text/template')
-        <% String.prototype.clean = function(trim) { var cutoff = 10000000; var appendMe = ""; if (typeof trim !== "undefined" && trim == true) { if (this.length > 27){ appendMe = "...."; cutoff = 27} }return this.charAt(0).toUpperCase() + this.slice(1).replace("_"," ")} %>       
-        //- <% String.prototype.clean = function() {return this;} %>
-        <%= first.clean() + " " + last.clean() %>
-        i.fr.js-choose C
-    include footer.jade
+h1.white.center Jumbo Smash
+.small-container
+    h1.white.lead Hi there, 
+        span.name
+    ul.smash-list
+        li.center.placeholder You have no current matches! Search names below to find your "desirables".
+    input(type='text', placeholder='Find People!').js-find-people
+script#person-select(type='text/template')
+    <% String.prototype.clean = function(trim) { var cutoff = 10000000; var appendMe = ""; if (typeof trim !== "undefined" && trim == true) { if (this.length > 27){ appendMe = "...."; cutoff = 27} }return this.charAt(0).toUpperCase() + this.slice(1).replace("_"," ")} %>       
+    //- <% String.prototype.clean = function() {return this;} %>
+    <%= first.clean() + " " + last.clean() %>
+    i.fr.js-choose C
+include footer.jade

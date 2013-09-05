@@ -18,6 +18,7 @@ body {
     font-family: sans-serif;
     background: #222 !important;
     position: relative;
+    padding-top: 30px;
 
     &:after {
         content: "";
@@ -129,11 +130,22 @@ input {
         padding: 5px;
         background: #eee;
     }
+
+    li {
+        display: block;
+        padding: 4px 10px;
+
+        &.match {
+            color: #cc0000;
+        }
+    }
 }
 
 .filtered-list {
     background: #f9f9f9;
     @include border-radius(3px);
+    max-height: 270px;
+    overflow: auto;
 
     li {
         text-indent: 30px;
@@ -162,4 +174,24 @@ input {
         }
     }
 
+}
+
+nav {
+    top: 0;
+    width: 100%;
+    background-color: rgb(255,255,255); // Old browsers
+    @include filter-gradient(#ffffff, #e5e5e5, vertical); // IE6-9
+    @include background-image(linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%));
+
+    ul {
+        height: 100%;
+        margin: 0 auto;
+        width: 960px;
+
+        li {
+            padding: 4px 10px;
+            display: inline-block;
+            margin: 0;
+        }
+    }
 }

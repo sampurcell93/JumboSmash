@@ -1,6 +1,8 @@
-$ ->
-    cc = (arg) ->
+$(document).ready ->
+    window.cc = (arg) ->
         console.log arg
+    String.prototype.clean =  ->
+        @charAt(0).toUpperCase() + @slice(1)
 
     messages = {
         signup_wrong: "Sorry, something went wrong with your signup"
@@ -12,11 +14,17 @@ $ ->
         @slice(0, @length-1)
 
     User = Backbone.Model.extend
+        url: "/matches"
+        defaults: 
+            {match: false}
+        initialize: ->
+            @getName()
         getName: ->
             name = @get("email").split(".");
-            first_name = first = name[0];
-            last_name = last = name[1].split("@")[0];
-            { first: first_name.toLowerCase(), last: last_name.toLowerCase()}
+            first_name = first = name[0].toLowerCase().clean();
+            last_name = last = name[1].split("@")[0].toLowerCase().clean();
+            @.first = first_name
+            @last = last_name
 
     Users = Backbone.Collection.extend
         url: "/users"
@@ -26,17 +34,57 @@ $ ->
         template: $("#person-select").html()
         tagName: 'li'
         render: ->
-            names = @model.getName()
-            data = _.template @template, {first: names.first, last: names.last}
+            data = _.template @template, {first: @model.first, last: @model.last}
             @$el.append data
             @
         events:
             "click .js-choose": (e) ->
                 $t = $ e.currentTarget
+                email = @model.get("email")
                 @$el.addClass("selected")
+                matches.add desirable = new User({email: email})
+                logged_in.save(null, {
+                    success: ->
+                        $.ajax
+                            url: '/matches'
+                            data: {
+                                search: email
+                            }
+                            dataType: 'json'
+                            success: (json) ->
+                                if json.match is true
+                                    launchModal("You got a match, biaatch", 4000)
+                    error: ->
+                        cc "error"
+                })
+
+    SmashItem = Backbone.View.extend
+        tagName: 'li'
+        template: "<%= first + ' ' + last %>"
+        initialize: ->
+            self = @
+            @listenTo @model,
+                remove: ->
+                    self.$el.slideUp "fast", ->
+                        $(@).remove()
+        render: ->
+            @$el.html(_.template @template, {first: @model.first, last: @model.last})
+            @
 
     SmashList = Backbone.View.extend
         el: '.smash-list'
+        initialize: ->
+            self = @
+            @listenTo @collection, 
+                add: @appendDesirable
+                remove: ->
+                    if self.collection.length is 0
+                        self.$(".placeholder").show()
+        appendDesirable: (person) ->
+            @$(".placeholder").hide()
+            person = new SmashItem({model: person})
+            @$el.append $(person.render().el).hide().fadeIn("slow")
+            @
 
     window.launchModal = (content, time) ->
         if $(".my-modal").length then $(".my-modal").remove()
@@ -71,16 +119,17 @@ $ ->
     # Returns elements in the collection that contain substrings of the query or match it
     findPeople = (self, keydown) ->
         $t = $ self
-        str = $t.val()
+        str = $t.val().toLowerCase()
         if keydown is true then str = str.trimLast()
-        str = str.toLowerCase()
         if str == ""
             $(".filtered-list").remove(); 
             return
         list = users.models
+        cc list.length
         filtered = _.filter list, (item) ->
-            names = item.getName()
-            names.first.indexOf(str) != -1 or names.last.indexOf(str) != -1 or (names.first + " " + names.last).indexOf(str) != -1
+            first = item.first.toLowerCase()
+            last = item.last.toLowerCase()
+            first.indexOf(str) != -1 or last.indexOf(str) != -1 or (first + " " + last).indexOf(str) != -1
         top = $t.offset().top
         left = $t.offset().left
         $(".filtered-list").remove()
@@ -108,8 +157,28 @@ $ ->
         launchModal messages[msg], 5000
 
     # Get all users in system for frontend sorting
+    logged_in = new User(window.user_data)
+    matches = new Users()
+    matchlist = new SmashList({collection: matches})
+    _.each logged_in.get("matches"), (match) ->
+        matches.add user = new User(match)
+    logged_in.set("matches", matches)
     users = new Users()
-    users.fetch()
-    cc window.user_data.matches
-    matches = new SmashList({collection: new Users(window.user_data.matches)})
-    cc matches
+    clean = []
+    _.each matches.models, (item) ->
+        clean.push item.toJSON().email
+    users.fetch({
+        data: {ignore: clean}
+        # success: (coll) ->
+        #     cc users.length
+        #     _.each coll.models, (model) ->
+        #         email = model.get("email")
+        #         search = _.findWhere matches.models, {email: email}
+        #         for match in matches.models 
+        #             if match.get("email") == email
+        #                 users.remove match
+        #     cc users.length
+
+    })
+
+    $(".name").text(logged_in.first)

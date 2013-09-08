@@ -95,13 +95,13 @@ app.post "/matches", checkAuth, (req, res) ->
 # Remove a match from the logged in user
 app.delete "/matches/:matchid", (req, res) ->
 
-app.get "/users", (req, res) ->
+app.get "/users", checkAuth, (req, res) ->
     ignore = req.query.ignore
     # query = req.params.query
     db.users.find {}, (err, users) ->
         clean = []
         _.each users, (user) ->
-            unless ignore? and ignore.indexOf(user.email) != -1
+            unless (ignore? and ignore.indexOf(user.email) != -1) or user.email == req.user.email
                 user.match_total = (_.filter user.matches, (matches) ->
                     matches.match == true
                 ).length

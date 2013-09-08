@@ -33,12 +33,18 @@ $(document).ready ->
     SelectableUser = Backbone.View.extend
         template: $("#person-select").html()
         tagName: 'li'
+        initialize: ->
+            self = @
+            @listenTo @model,
+                remove: ->
+                    self.$el.delay(300).slideUp("fast")
         render: ->
             data = _.template @template, {first: @model.first, last: @model.last}
             @$el.append data
             @
         events:
             "click .js-choose": (e) ->
+                self = @
                 $t = $ e.currentTarget
                 email = @model.get("email")
                 @$el.addClass("selected")
@@ -54,6 +60,7 @@ $(document).ready ->
                             success: (json) ->
                                 if json.match is true
                                     launchModal("You got a match, biaatch", 4000)
+                                self.model.collection.remove self.model
                     error: ->
                         cc "error"
                 })

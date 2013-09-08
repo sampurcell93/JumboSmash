@@ -160,14 +160,14 @@
 
   app["delete"]("/matches/:matchid", function(req, res) {});
 
-  app.get("/users", function(req, res) {
+  app.get("/users", checkAuth, function(req, res) {
     var ignore;
     ignore = req.query.ignore;
     db.users.find({}, function(err, users) {
       var clean;
       clean = [];
       _.each(users, function(user) {
-        if (!((ignore != null) && ignore.indexOf(user.email) !== -1)) {
+        if (!(((ignore != null) && ignore.indexOf(user.email) !== -1) || user.email === req.user.email)) {
           user.match_total = (_.filter(user.matches, function(matches) {
             return matches.match === true;
           })).length;

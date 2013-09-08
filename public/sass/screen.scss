@@ -37,6 +37,10 @@ body {
     }
 }
 
+h1 {
+    margin: 0 !important;
+}
+
 
 .my-modal {
     display: block;
@@ -75,7 +79,7 @@ button {
 
 .smash-logo {
     background: url("../img/jumboheart.png") left center no-repeat;
-    min-height: 80px;
+    text-indent: 30px;
 }
 
 .login-window {
@@ -181,16 +185,20 @@ nav {
     width: 100%;
     background-color: rgb(255,255,255); // Old browsers
     @include filter-gradient(#ffffff, #e5e5e5, vertical); // IE6-9
+    @include clearfix();
     @include background-image(linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%));
+    padding-left: 40px;
 
     ul {
         height: 100%;
         margin: 0 auto;
-        width: 960px;
+        float: right;
+        @include clearfix();
 
         li {
             padding: 4px 10px;
             display: inline-block;
+            float: right;
             margin: 0;
         }
     }

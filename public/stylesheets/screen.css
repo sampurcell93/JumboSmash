@@ -389,7 +389,12 @@ body.active-modal::after {
   display: block;
 }
 
-/* line 41, ../sass/screen.scss */
+/* line 40, ../sass/screen.scss */
+h1 {
+  margin: 0 !important;
+}
+
+/* line 45, ../sass/screen.scss */
 .my-modal {
   display: block;
   width: 900px;
@@ -405,7 +410,7 @@ body.active-modal::after {
   -moz-box-shadow: 0px 0px 7px #222222;
   box-shadow: 0px 0px 7px #222222;
 }
-/* line 55, ../sass/screen.scss */
+/* line 59, ../sass/screen.scss */
 .my-modal .close-modal {
   position: absolute;
   top: 4px;
@@ -413,7 +418,7 @@ body.active-modal::after {
   cursor: pointer;
 }
 
-/* line 63, ../sass/screen.scss */
+/* line 67, ../sass/screen.scss */
 button {
   padding: 6px 8px;
   border: 1px solid #ccc;
@@ -424,7 +429,7 @@ button {
   border-radius: 2px;
 }
 
-/* line 69, ../sass/screen.scss */
+/* line 73, ../sass/screen.scss */
 .signup-logo {
   width: 600px;
   margin: 10px auto;
@@ -432,13 +437,13 @@ button {
   color: #f9f9f9;
 }
 
-/* line 76, ../sass/screen.scss */
+/* line 80, ../sass/screen.scss */
 .smash-logo {
   background: url("../img/jumboheart.png") left center no-repeat;
-  min-height: 80px;
+  text-indent: 30px;
 }
 
-/* line 81, ../sass/screen.scss */
+/* line 85, ../sass/screen.scss */
 .login-window {
   background: #f9f9f9;
   overflow: hidden;
@@ -453,11 +458,11 @@ button {
   border: 1px solid #ccc;
   padding: 10px;
 }
-/* line 90, ../sass/screen.scss */
+/* line 94, ../sass/screen.scss */
 .login-window input {
   margin: 9px auto;
 }
-/* line 94, ../sass/screen.scss */
+/* line 98, ../sass/screen.scss */
 .login-window p {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -467,7 +472,7 @@ button {
   border: 1px solid #ddd;
 }
 
-/* line 100, ../sass/screen.scss */
+/* line 104, ../sass/screen.scss */
 input {
   font-size: 1em;
   display: block;
@@ -484,12 +489,12 @@ input {
   outline: none;
   border: 1px solid transparent;
 }
-/* line 110, ../sass/screen.scss */
+/* line 114, ../sass/screen.scss */
 input:focus {
   border: 1px solid #B81F11;
 }
 
-/* line 115, ../sass/screen.scss */
+/* line 119, ../sass/screen.scss */
 .small-container {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -500,12 +505,12 @@ input:focus {
   width: 600px;
 }
 
-/* line 122, ../sass/screen.scss */
+/* line 126, ../sass/screen.scss */
 .smash-list {
   background: #f9f9f9;
   border: 1px solid #ddd;
 }
-/* line 126, ../sass/screen.scss */
+/* line 130, ../sass/screen.scss */
 .smash-list .placeholder {
   border: 1px solid #ddd;
   -webkit-border-radius: 2px;
@@ -517,17 +522,17 @@ input:focus {
   padding: 5px;
   background: #eee;
 }
-/* line 134, ../sass/screen.scss */
+/* line 138, ../sass/screen.scss */
 .smash-list li {
   display: block;
   padding: 4px 10px;
 }
-/* line 138, ../sass/screen.scss */
+/* line 142, ../sass/screen.scss */
 .smash-list li.match {
   color: #cc0000;
 }
 
-/* line 144, ../sass/screen.scss */
+/* line 148, ../sass/screen.scss */
 .filtered-list {
   background: #f9f9f9;
   -webkit-border-radius: 3px;
@@ -538,7 +543,7 @@ input:focus {
   max-height: 270px;
   overflow: auto;
 }
-/* line 150, ../sass/screen.scss */
+/* line 154, ../sass/screen.scss */
 .filtered-list li {
   text-indent: 30px;
   padding: 4px 0;
@@ -546,7 +551,7 @@ input:focus {
   border-bottom: 1px solid #ccc;
   cursor: pointer;
 }
-/* line 157, ../sass/screen.scss */
+/* line 161, ../sass/screen.scss */
 .filtered-list li:first-of-type {
   -webkit-border-radius: 3px 3px 0 0;
   -moz-border-radius: 3px 3px 0 0;
@@ -554,7 +559,7 @@ input:focus {
   -o-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
 }
-/* line 158, ../sass/screen.scss */
+/* line 162, ../sass/screen.scss */
 .filtered-list li:last-of-type {
   -webkit-border-radius: 0 0 3px 3px;
   -moz-border-radius: 0 0 3px 3px;
@@ -562,7 +567,7 @@ input:focus {
   -o-border-radius: 0 0 3px 3px;
   border-radius: 0 0 3px 3px;
 }
-/* line 160, ../sass/screen.scss */
+/* line 164, ../sass/screen.scss */
 .filtered-list li:hover {
   background-color: white;
   *zoom: 1;
@@ -574,37 +579,43 @@ input:focus {
   background-image: linear-gradient(top, #ffffff 0%, #e5e5e5 100%);
   color: #cc0000;
 }
-/* line 168, ../sass/screen.scss */
+/* line 172, ../sass/screen.scss */
 .filtered-list li.selected {
   background: #cc0000;
 }
-/* line 172, ../sass/screen.scss */
+/* line 176, ../sass/screen.scss */
 .filtered-list li .js-choose {
   padding: 0 10px;
 }
 
-/* line 179, ../sass/screen.scss */
+/* line 183, ../sass/screen.scss */
 nav {
   top: 0;
   width: 100%;
   background-color: white;
   *zoom: 1;
   filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFFFFFFF', endColorstr='#FFE5E5E5');
+  overflow: hidden;
+  *zoom: 1;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #e5e5e5));
   background-image: -webkit-linear-gradient(top, #ffffff 0%, #e5e5e5 100%);
   background-image: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%);
   background-image: -o-linear-gradient(top, #ffffff 0%, #e5e5e5 100%);
   background-image: linear-gradient(top, #ffffff 0%, #e5e5e5 100%);
+  padding-left: 40px;
 }
-/* line 186, ../sass/screen.scss */
+/* line 192, ../sass/screen.scss */
 nav ul {
   height: 100%;
   margin: 0 auto;
-  width: 960px;
+  float: right;
+  overflow: hidden;
+  *zoom: 1;
 }
-/* line 191, ../sass/screen.scss */
+/* line 198, ../sass/screen.scss */
 nav ul li {
   padding: 4px 10px;
   display: inline-block;
+  float: right;
   margin: 0;
 }

@@ -40,6 +40,15 @@
     SelectableUser = Backbone.View.extend({
       template: $("#person-select").html(),
       tagName: 'li',
+      initialize: function() {
+        var self;
+        self = this;
+        return this.listenTo(this.model, {
+          remove: function() {
+            return self.$el.delay(300).slideUp("fast");
+          }
+        });
+      },
       render: function() {
         var data;
         data = _.template(this.template, {
@@ -51,7 +60,8 @@
       },
       events: {
         "click .js-choose": function(e) {
-          var $t, desirable, email;
+          var $t, desirable, email, self;
+          self = this;
           $t = $(e.currentTarget);
           email = this.model.get("email");
           this.$el.addClass("selected");
@@ -68,8 +78,9 @@
                 dataType: 'json',
                 success: function(json) {
                   if (json.match === true) {
-                    return launchModal("You got a match, biaatch", 4000);
+                    launchModal("You got a match, biaatch", 4000);
                   }
+                  return self.model.collection.remove(self.model);
                 }
               });
             },
